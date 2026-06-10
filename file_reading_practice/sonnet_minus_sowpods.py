@@ -58,3 +58,23 @@ After sorting -> ['a', 'compare', 'i', 'to'].
 =================================================
 
 """
+sowpods_set = set()
+# read sowpods into a set
+with open("file_reading_practice/sowpods.txt","r") as f:
+    for word in f:
+        sowpods_set.add(word.strip().lower())
+
+missing_words = []
+
+# Check sonnet words
+with open("file_reading_practice/sonnet_words.txt","r") as f:
+    for word in f:
+        word = word.strip().lower()
+
+        if word not in sowpods_set:
+            if word not in missing_words:
+                missing_words.append(word)
+
+print("Words in sonnet but not in sowpods:")
+print(missing_words)
+print("Total:", len(missing_words))
