@@ -53,3 +53,23 @@ Sorted -> ['b', 'd', 'e', 'h', 'k', 'm', 'n',
 =================================================
 
 """
+appeared = set()
+double_letters = set()
+
+with open("file_reading_practice/sowpods.txt","r") as f:
+    for word in f:
+        word = word.strip().lower()
+
+        for ch in word:
+            if ch.isalpha():
+                appeared.add(ch)
+
+        i = 0
+        while i < len(word) - 1:
+            if word[i] == word[i + 1]:
+                double_letters.add(word[i])
+            i += 1
+
+result = sorted(appeared - double_letters)
+
+print(result)
